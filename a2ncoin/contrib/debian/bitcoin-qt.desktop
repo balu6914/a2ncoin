@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=A2ncoin Core
+Comment=Connect to the A2ncoin P2P Network
+Comment[de]=Verbinde mit dem A2ncoin peer-to-peer Netzwerk
+Comment[fr]=A2ncoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=A2ncoin, eşten eşe kriptografik sanal para birimi
+Exec=a2ncoin-qt %u
+Terminal=false
+Type=Application
+Icon=bitcoin128
+MimeType=x-scheme-handler/a2ncoin;
+Categories=Office;Finance;

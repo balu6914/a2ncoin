@@ -1,0 +1,8 @@
+/usr/bin/a2ncoin-cli		--	gen_context(system_u:object_r:bitcoin_exec_t,s0)
+/usr/sbin/bitcoind		--	gen_context(system_u:object_r:bitcoin_exec_t,s0)
+/usr/lib(64)?/a2ncoin/bitcoind		--	gen_context(system_u:object_r:bitcoin_exec_t,s0)
+
+/etc/a2ncoin(/.*)?		gen_context(system_u:object_r:bitcoin_conf_t,s0)
+/var/lib/a2ncoin(/.*)?		gen_context(system_u:object_r:bitcoin_var_lib_t,s0)
+
+(/var)?/run/bitcoind(/.*)?   gen_context(system_u:object_r:bitcoin_var_run_t,s0)

@@ -1,0 +1,218 @@
+# Copyright (c) 2013-2016 The A2ncoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+TESTS += test/test_h2hcoin
+bin_PROGRAMS += test/test_h2hcoin
+noinst_PROGRAMS += test/test_h2hcoin_fuzzy
+TEST_SRCDIR = test
+TEST_BINARY=test/test_h2hcoin$(EXEEXT)
+
+
+EXTRA_DIST += \
+	test/bctest.py \
+	test/a2ncoin-util-test.py \
+	test/data/a2ncoin-util-test.json \
+	test/data/blanktxv1.hex \
+	test/data/blanktxv1.json \
+	test/data/blanktxv2.hex \
+	test/data/blanktxv2.json \
+	test/data/tt-delin1-out.hex \
+	test/data/tt-delin1-out.json \
+	test/data/tt-delout1-out.hex \
+	test/data/tt-delout1-out.json \
+	test/data/tt-locktime317000-out.hex \
+	test/data/tt-locktime317000-out.json \
+	test/data/tx394b54bb.hex \
+	test/data/txcreate1.hex \
+	test/data/txcreate1.json \
+	test/data/txcreate2.hex \
+	test/data/txcreate2.json \
+	test/data/txcreatedata1.hex \
+	test/data/txcreatedata1.json \
+	test/data/txcreatedata2.hex \
+	test/data/txcreatedata2.json \
+	test/data/txcreatedata_seq0.hex \
+	test/data/txcreatedata_seq0.json \
+	test/data/txcreatedata_seq1.hex \
+	test/data/txcreatedata_seq1.json \
+	test/data/txcreatemultisig1.hex \
+	test/data/txcreatemultisig1.json \
+	test/data/txcreatemultisig2.hex \
+	test/data/txcreatemultisig2.json \
+	test/data/txcreatemultisig3.hex \
+	test/data/txcreatemultisig3.json \
+	test/data/txcreatemultisig4.hex \
+	test/data/txcreatemultisig4.json \
+	test/data/txcreateoutpubkey1.hex \
+	test/data/txcreateoutpubkey1.json \
+	test/data/txcreateoutpubkey2.hex \
+	test/data/txcreateoutpubkey2.json \
+	test/data/txcreateoutpubkey3.hex \
+	test/data/txcreateoutpubkey3.json \
+	test/data/txcreatescript1.hex \
+	test/data/txcreatescript1.json \
+	test/data/txcreatescript2.hex \
+	test/data/txcreatescript2.json \
+	test/data/txcreatescript3.hex \
+	test/data/txcreatescript3.json \
+	test/data/txcreatescript4.hex \
+	test/data/txcreatescript4.json \
+	test/data/txcreatesignv1.hex \
+	test/data/txcreatesignv1.json \
+	test/data/txcreatesignv2.hex
+
+JSON_TEST_FILES = \
+  test/data/script_tests.json \
+  test/data/base58_keys_valid.json \
+  test/data/base58_encode_decode.json \
+  test/data/base58_keys_invalid.json \
+  test/data/tx_invalid.json \
+  test/data/tx_valid.json \
+  test/data/sighash.json
+
+RAW_TEST_FILES =
+
+GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
+
+# test_bitcoin binary #
+BITCOIN_TESTS =\
+  test/arith_uint256_testsa2ncoin.cpp \
+  test/scriptnum10.h \
+  test/addrman_testsa2ncoin.cpp \
+  test/amount_testsa2ncoin.cpp \
+  test/allocator_testsa2ncoin.cpp \
+  test/base32_testsa2ncoin.cpp \
+  test/base58_testsa2ncoin.cpp \
+  test/base64_testsa2ncoin.cpp \
+  test/bip32_testsa2ncoin.cpp \
+  test/bloom_testsa2ncoin.cpp \
+  test/bswap_testsa2ncoin.cpp \
+  test/coins_testsa2ncoin.cpp \
+  test/compress_testsa2ncoin.cpp \
+  test/crypto_testsa2ncoin.cpp \
+  test/cuckoocache_testsa2ncoin.cpp \
+  test/DoS_testsa2ncoin.cpp \
+  test/getarg_testsa2ncoin.cpp \
+  test/hash_testsa2ncoin.cpp \
+  test/key_testsa2ncoin.cpp \
+  test/limitedmap_testsa2ncoin.cpp \
+  test/dbwrapper_testsa2ncoin.cpp \
+  test/main_testsa2ncoin.cpp \
+  test/mempool_testsa2ncoin.cpp \
+  test/merkle_testsa2ncoin.cpp \
+  test/miner_testsa2ncoin.cpp \
+  test/multisig_testsa2ncoin.cpp \
+  test/net_testsa2ncoin.cpp \
+  test/netbase_testsa2ncoin.cpp \
+  test/pmt_testsa2ncoin.cpp \
+  test/policyestimator_testsa2ncoin.cpp \
+  test/pow_testsa2ncoin.cpp \
+  test/prevector_testsa2ncoin.cpp \
+  test/raii_event_testsa2ncoin.cpp \
+  test/reverselock_testsa2ncoin.cpp \
+  test/rpc_testsa2ncoin.cpp \
+  test/sanity_testsa2ncoin.cpp \
+  test/scheduler_testsa2ncoin.cpp \
+  test/script_P2SH_testsa2ncoin.cpp \
+  test/script_testsa2ncoin.cpp \
+  test/scriptnum_testsa2ncoin.cpp \
+  test/scrypt_testsa2ncoin.cpp \
+  test/serialize_testsa2ncoin.cpp \
+  test/sighash_testsa2ncoin.cpp \
+  test/sigopcount_testsa2ncoin.cpp \
+  test/skiplist_testsa2ncoin.cpp \
+  test/streams_testsa2ncoin.cpp \
+  test/test_bitcoina2ncoin.cpp \
+  test/test_bitcoin.h \
+  test/test_random.h \
+  test/testutila2ncoin.cpp \
+  test/testutil.h \
+  test/timedata_testsa2ncoin.cpp \
+  test/transaction_testsa2ncoin.cpp \
+  test/txvalidationcache_testsa2ncoin.cpp \
+  test/versionbits_testsa2ncoin.cpp \
+  test/uint256_testsa2ncoin.cpp \
+  test/univalue_testsa2ncoin.cpp \
+  test/util_testsa2ncoin.cpp
+
+if ENABLE_WALLET
+BITCOIN_TESTS += \
+  wallet/test/wallet_test_fixturea2ncoin.cpp \
+  wallet/test/wallet_test_fixture.h \
+  wallet/test/accounting_testsa2ncoin.cpp \
+  wallet/test/wallet_testsa2ncoin.cpp \
+  wallet/test/crypto_testsa2ncoin.cpp
+endif
+
+test_test_h2hcoin_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_h2hcoin_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_h2hcoin_LDADD = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+  $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS)
+test_test_h2hcoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+if ENABLE_WALLET
+test_test_h2hcoin_LDADD += $(LIBBITCOIN_WALLET)
+endif
+
+test_test_h2hcoin_LDADD += $(LIBBITCOIN_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+test_test_h2hcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+
+if ENABLE_ZMQ
+test_test_h2hcoin_LDADD += $(ZMQ_LIBS)
+endif
+#
+
+# test_bitcoin_fuzzy binary #
+test_test_h2hcoin_fuzzy_SOURCES = test/test_bitcoin_fuzzya2ncoin.cpp
+test_test_h2hcoin_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+test_test_h2hcoin_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_h2hcoin_fuzzy_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+
+test_test_h2hcoin_fuzzy_LDADD = \
+  $(LIBUNIVALUE) \
+  $(LIBBITCOIN_SERVER) \
+  $(LIBBITCOIN_COMMON) \
+  $(LIBBITCOIN_UTIL) \
+  $(LIBBITCOIN_CONSENSUS) \
+  $(LIBBITCOIN_CRYPTO) \
+  $(LIBSECP256K1)
+
+test_test_h2hcoin_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+#
+
+nodist_test_test_h2hcoin_SOURCES = $(GENERATED_TEST_FILES)
+
+$(BITCOIN_TESTS): $(GENERATED_TEST_FILES)
+
+CLEAN_BITCOIN_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
+
+CLEANFILES += $(CLEAN_BITCOIN_TEST)
+
+# This file is problematic for out-of-tree builds if it exists.
+DISTCLEANFILES += test/buildenv.pyc
+
+bitcoin_test: $(TEST_BINARY)
+
+bitcoin_test_check: $(TEST_BINARY) FORCE
+	$(MAKE) check-TESTS TESTS=$^
+
+bitcoin_test_clean : FORCE
+	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_bitcoin_OBJECTS) $(TEST_BINARY)
+
+check-local:
+	@echo "Running test/a2ncoin-util-test.py..."
+	$(AM_V_at)srcdir=$(srcdir) PYTHONPATH=$(builddir)/test $(PYTHON) $(srcdir)/test/a2ncoin-util-test.py
+	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
+if EMBEDDED_UNIVALUE
+	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue check
+endif
+
+%.json.h: %.json
+	@$(MKDIR_P) $(@D)
+	@{ \
+	 echo "namespace json_tests{" && \
+	 echo "static unsigned const char $(*F)[] = {" && \
+	 $(HEXDUMP) -v -e '8/1 "0x%02x, "' -e '"\n"' $< | $(SED) -e 's/0x  ,//g' && \
+	 echo "};};"; \
+	} > "$@.new" && mv -f "$@.new" "$@"
+	@echo "Generated $@"
